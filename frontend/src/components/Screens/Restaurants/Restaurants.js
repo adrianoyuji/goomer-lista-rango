@@ -9,6 +9,7 @@ const goomer_restaurant_api = "http://challange.goomer.com.br/restaurants";
 export default function Restaurants(props) {
   const [restaurantList, setRestaurantList] = useState("");
   const [loading, setLoading] = useState(true);
+  const [searchText, setSearchText] = useState("");
 
   //Busca lista de restaurantes utilizando axios e o endereço da api
   useEffect(() => {
@@ -21,23 +22,33 @@ export default function Restaurants(props) {
       .catch((error) => alert("Error"));
   }, []);
 
-  console.log(restaurantList);
+  const handleChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
+  function renderRestaurantList() {
+    let filteredList = restaurantList.filter((restaurant) =>
+      restaurant.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    return filteredList.map((restaurant, index) => (
+      <RestaurantItem
+        key={index}
+        restaurant={restaurant}
+        setRestaurantId={props.setRestaurantId}
+      />
+    ));
+  }
 
   return (
     <div className="restaurant">
       <h1>Seja bem-vindo!</h1>
-      <SearchBar title="Pesquisar Restaurantes" />
+      <SearchBar title="Pesquisar Restaurantes" handleChange={handleChange} />
       <div className="restaurant-list">
         {loading ? (
           <div className="loading">Carregando, por favor aguarde...</div>
         ) : (
-          restaurantList.map((restaurant, index) => (
-            <RestaurantItem
-              key={index}
-              restaurant={restaurant}
-              setRestaurantId={props.setRestaurantId}
-            />
-          ))
+          renderRestaurantList()
         )}
       </div>
     </div>

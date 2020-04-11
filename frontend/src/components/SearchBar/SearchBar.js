@@ -10,7 +10,7 @@ export default function SearchBar(props) {
         <div className="search-title">{props.title}</div>
       </div>
       <div className="input-container">
-        <input type="text" />
+        <input type="text" onChange={props.handleChange} />
       </div>
       <div className="icon-container">
         <FontAwesomeIcon icon={faSearch} size="1x" color="black" />
