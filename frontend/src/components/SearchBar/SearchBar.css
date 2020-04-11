@@ -1,0 +1,51 @@
+.SearchBar {
+  display: flex;
+  flex-direction: "row";
+  flex: 1;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border-radius: 50px;
+  background-color: white;
+  box-shadow: 0 0 3px black;
+}
+input {
+  background-color: transparent;
+  border: 0px solid;
+  height: 20px;
+  width: 160px;
+  font-size: large;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.title-container {
+  padding: 10px;
+  text-align: center;
+  font-size: large;
+  flex: 2.5;
+}
+.input-container {
+  padding: 10px;
+  background-color: #ebebeb;
+  align-items: center;
+  flex: 9.5;
+}
+.icon-container {
+  padding: 10px;
+  background-color: #ebebeb;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  flex: 0.5;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+input {
+  width: 100%;
+}

@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Restaurants from "./components/Screens/Restaurants/Restaurants";
+import Menu from "./components/Screens/Menu/Menu";
 function App() {
+  const [restaurantId, setRestaurantId] = useState("");
+
+  function renderRestaurants() {
+    return <Restaurants setRestaurantId={setRestaurantId} />;
+  }
+
+  function renderMenu() {
+    return <Menu restaurantId={restaurantId} />;
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="body">
+        {restaurantId ? renderMenu() : renderRestaurants()}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,14 @@
+.header {
+  height: 7.5vh;
+  background-color: #ff383b;
+  width: auto;
+}
+
+.title {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px black;
+  font-size: xx-large;
+  padding: 10px;
+  font-weight: bold;
+}
