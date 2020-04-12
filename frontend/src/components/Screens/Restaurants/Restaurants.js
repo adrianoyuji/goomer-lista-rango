@@ -19,7 +19,7 @@ export default function Restaurants(props) {
         setRestaurantList(response.data);
         setLoading(false);
       })
-      .catch((error) => alert("Error"));
+      .catch((error) => alert("Error while getting restaurant list"));
   }, []);
 
   const handleChange = (event) => {
@@ -39,7 +39,6 @@ export default function Restaurants(props) {
       />
     ));
   }
-
   return (
     <div className="restaurant">
       <h1>Seja bem-vindo!</h1>

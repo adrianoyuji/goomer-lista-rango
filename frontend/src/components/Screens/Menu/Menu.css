@@ -1,0 +1,57 @@
+.menu {
+  height: 100%;
+  width: auto;
+  padding-left: 15vw;
+  padding-right: 15vw;
+}
+
+.backbutton {
+  margin: 15px;
+  padding: 5px;
+  background-color: #f1f1f1;
+  width: 64px;
+  border-radius: 50px;
+  transition: ease-in 0.1s;
+  cursor: pointer;
+  box-shadow: 0 0 3px black;
+}
+
+.backbutton:hover {
+  transform: scale(1.1);
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  box-shadow: 0 0 3px black;
+}
+
+.info-image {
+  flex: 1;
+}
+
+.info-text {
+  text-align: left;
+  flex: 1;
+}
+
+.restaurante-name {
+  font-size: x-large;
+  font-weight: bold;
+}
+.infos {
+  padding: 5px;
+  flex: 8;
+}
+
+.icon {
+  padding-right: 5px;
+}
+
+.right-container {
+  background-color: gray;
+  width: auto;
+  height: 100%;
+}

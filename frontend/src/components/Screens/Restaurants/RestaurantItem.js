@@ -21,16 +21,11 @@ export default function RestaurantItem(props) {
           let start = parseFloat(startHour) * 60 + parseFloat(startMin);
           let [endHour, endMin] = element.to.split(":");
           let end = parseFloat(endHour) * 60 + parseFloat(endMin);
-          if (start <= now && now <= end) {
-            setOpen(true);
-          } else {
-            setOpen(false);
-          }
+          setOpen(start <= now && now <= end);
         }
       });
     }
   }, []);
-  //console.log(props.restaurant);
 
   return (
     <div
@@ -57,7 +52,6 @@ export default function RestaurantItem(props) {
           </div>
         ) : (
           <div className="closed">
-            {" "}
             <FontAwesomeIcon icon={faTimes} />
             Fechado
           </div>

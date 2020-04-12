@@ -11,7 +11,9 @@ function App() {
   }
 
   function renderMenu() {
-    return <Menu restaurantId={restaurantId} />;
+    return (
+      <Menu restaurantId={restaurantId} setRestaurantId={setRestaurantId} />
+    );
   }
 
   return (
