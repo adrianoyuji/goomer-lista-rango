@@ -19,6 +19,9 @@
 .backbutton:hover {
   transform: scale(1.1);
 }
+.backbutton:active {
+  background-color: #c1c1c1;
+}
 
 .info-container {
   flex-direction: row;

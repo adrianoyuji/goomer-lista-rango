@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./FoodItem.css";
+import FoodDetail from "../../Modal/FoodDetail";
 import setInverval from "../../../utils/index";
 
 export default function FoodItem(props) {
   const [price, setPrice] = useState("");
   const [onSale, setSale] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   var date, weekDay, now;
 
@@ -53,22 +55,30 @@ export default function FoodItem(props) {
   }, 1000); //loops function with a set delay value,check utils folder for code
 
   return (
-    <div className="item-container">
-      <div className="image-container">
-        <img src={props.food.image} alt="thumb" height="100%" width="100%" />
-      </div>
-      <div className="food-info">
-        <div className="food-name"> {props.food.name}</div>
-        <div className="food-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    <>
+      <div className="item-container" onClick={() => setModalShow(true)}>
+        <div className="image-container">
+          <img src={props.food.image} alt="thumb" height="100%" width="100%" />
         </div>
-        <div className="food-price-info">
-          <div className="food-price">{price}</div>
-          <div className="food-discount">
-            {onSale ? <div>R$ {props.food.price.toFixed(2)}</div> : null}
+        <div className="food-info">
+          <div className="food-name"> {props.food.name}</div>
+          <div className="food-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          </div>
+          <div className="food-price-info">
+            <div className="food-price">{price}</div>
+            <div className="food-discount">
+              {onSale ? <div>R$ {props.food.price.toFixed(2)}</div> : null}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <FoodDetail
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        food={props.food}
+        onSale={onSale}
+      />
+    </>
   );
 }

@@ -5,6 +5,14 @@
   padding: 10px;
   border-bottom: black;
   border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.category-box:hover {
+  background-color: #f1f1f1;
+}
+.category-box:active {
+  background-color: #c1c1c1;
 }
 
 .category-title {

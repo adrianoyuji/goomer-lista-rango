@@ -1,0 +1,130 @@
+.modal-info {
+  display: flex;
+  flex-direction: row;
+}
+
+p {
+  flex: 2;
+}
+.modal-price {
+  flex: 1;
+  color: #009ca3;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+}
+
+.quantity-changer {
+  color: #009ca3;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 3px black;
+  text-align: center;
+  flex: 1;
+  align-items: center;
+}
+
+.quantity-value {
+  font-size: x-large;
+  font-weight: bold;
+  flex: 1;
+}
+
+.quantity-operator {
+  flex: 1;
+  cursor: pointer;
+  color: #009ca3;
+}
+
+.quantity-operator:active {
+  color: #007d82;
+}
+
+.add-button {
+  flex: 1;
+}
+.total-amount {
+  flex: 1;
+}
+
+.discounted-price {
+  font-size: medium;
+  color: gray;
+  text-decoration: line-through;
+}
+
+.confirm-button {
+  padding: 5px;
+  flex: 1;
+  color: white;
+  background-color: #009ca3;
+  display: flex;
+  flex-direction: row;
+  border-radius: 4px;
+  text-align: center;
+  align-items: center;
+  font-size: x-large;
+  margin-left: 40%;
+  cursor: pointer;
+}
+.close-modal {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  height: 50px;
+  width: 50px;
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 3px black;
+  margin: -15px;
+  color: #404040;
+  text-align: center;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.close-modal:hover {
+  background-color: #f1f1f1;
+}
+.close-modal:active {
+  background-color: #c1c1c1;
+}
+
+.confirm-button:hover {
+  background-color: #007d82;
+}
+.confirm-button:active {
+  background-color: #006468;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="modal-info"] {
+    flex-direction: column;
+    max-height: none;
+  }
+  [class*="modal-price"] {
+    font-size: x-large;
+  }
+  [class*="confirm-button"] {
+    font-size: large;
+    font-weight: bold;
+    margin-left: 0;
+  }
+  [class*="quantity-value"] {
+    font-size: large;
+  }
+  [class*="close-modal"] {
+    margin: -5px;
+    height: 40px;
+    width: 40px;
+    padding-top: 7px;
+  }
+}

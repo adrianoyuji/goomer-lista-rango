@@ -44,6 +44,12 @@ input:focus {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
+.icon-clear {
+  padding: 10px;
+  background-color: #ebebeb;
+  text-align: center;
+  padding-left: 15px;
+}
 
 input {
   width: 100%;

@@ -117,8 +117,6 @@ export default function Menu(props) {
       )
     );
 
-    console.log(filteredList);
-    //console.log(categories);
     return (
       <div className="menu">
         <div className="info-container">
@@ -165,7 +163,6 @@ export default function Menu(props) {
         <FontAwesomeIcon icon={faChevronLeft} className="icon" />
         Voltar
       </div>
-
       {loading ? (
         <div className="loading">Carregando, por favor aguarde...</div>
       ) : (

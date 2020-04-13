@@ -3,6 +3,7 @@
   width: auto;
   padding-left: 10vw;
   padding-right: 10vw;
+  padding-top: 15px;
 }
 
 .loading {
@@ -17,6 +18,9 @@
 
 .restaurante-item:hover {
   transform: scale(1.1);
+}
+.restaurante-item:active {
+  background-color: #c1c1c1;
 }
 
 .restaurante-item {

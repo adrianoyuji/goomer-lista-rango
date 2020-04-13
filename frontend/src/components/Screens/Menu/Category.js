@@ -15,7 +15,7 @@ export default function Category(props) {
           <div className="category-title">{props.category[0]}</div>
           <FontAwesomeIcon
             icon={faChevronUp}
-            size="1x"
+            size="2x"
             className="category-icon"
           />
         </div>
@@ -34,7 +34,7 @@ export default function Category(props) {
         <div className="category-title">{props.category[0]}</div>
         <FontAwesomeIcon
           icon={faChevronDown}
-          size="1x"
+          size="2x"
           className="category-icon"
         />
       </div>

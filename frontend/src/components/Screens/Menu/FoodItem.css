@@ -16,6 +16,17 @@
 .item-container:hover {
   transform: scale(1.1);
 }
+.item-container:active {
+  background-color: #c1c1c1;
+}
+
+.modal-image {
+  object-fit: cover; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  overflow: hidden;
+  max-height: 511px;
+  height: auto;
+}
 
 .food-info {
   flex: 3;
@@ -30,15 +41,17 @@
 }
 
 .food-name {
-  font-size: large;
+  font-size: medium;
+  font-weight: bold;
 }
 
 .food-description {
-  font-size: medium;
+  font-size: small;
   color: gray;
 }
 
 .food-price-info {
+  padding: 10px;
   display: flex;
   flex-direction: row;
 }
@@ -47,7 +60,6 @@
   color: #009ca3;
   font-size: large;
   font-weight: bold;
-  padding-top: 5px;
 }
 
 .food-discount {
@@ -67,6 +79,10 @@
   }
   [class*="image-container"] {
     height: auto;
+    width: 100%;
+  }
+  [class*="modal-image"] {
+    max-height: 256px;
     width: 100%;
   }
 }
