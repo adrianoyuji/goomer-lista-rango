@@ -1,0 +1,24 @@
+.category-box {
+  display: flex;
+  height: auto;
+  flex-direction: row;
+  padding: 10px;
+  border-bottom: black;
+  border-bottom: 1px solid black;
+}
+
+.category-title {
+  flex: 9;
+  font-size: x-large;
+}
+.category-icon {
+  text-align: center;
+  flex: 1;
+  align-items: flex-end;
+  padding-top: 10px;
+}
+
+.category-list {
+  flex-wrap: wrap;
+  display: flex;
+}

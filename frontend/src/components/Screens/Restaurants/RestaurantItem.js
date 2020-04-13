@@ -3,16 +3,19 @@ import "./Restaurants.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import setInverval from "../../../utils/index";
 
-//O algoritmo entende que quando não há o objeto Hour que o restaurante se encontra aberto
+//code understands that if no object hours does not exist the store is open
 
 export default function RestaurantItem(props) {
   const [open, setOpen] = useState(true);
-  var date = new Date();
-  const weekDay = date.getDay() + 1;
-  const now = date.getHours() * 60 + date.getMinutes();
 
-  useEffect(() => {
+  var date, weekDay, now;
+
+  function checkOpen() {
+    date = new Date();
+    weekDay = date.getDay() + 1;
+    now = date.getHours() * 60 + date.getMinutes();
     if (!!props.restaurant.hours) {
       //verifies if object hours exists and prevent errors
       props.restaurant.hours.forEach((element) => {
@@ -21,11 +24,19 @@ export default function RestaurantItem(props) {
           let start = parseFloat(startHour) * 60 + parseFloat(startMin);
           let [endHour, endMin] = element.to.split(":");
           let end = parseFloat(endHour) * 60 + parseFloat(endMin);
+          if (end < 360) {
+            //checks if object 'to' is under 6 AM and adds an extra 24 hours worth of minutes to total
+            end = end + 1440;
+          }
           setOpen(start <= now && now <= end);
         }
       });
     }
-  }, []);
+  }
+
+  useEffect(() => checkOpen(), []); //runs function to check if restaurant is open
+
+  setInverval(() => checkOpen(), 1000); //loops function with a set delay value,check utils folder for code
 
   return (
     <div
@@ -37,7 +48,7 @@ export default function RestaurantItem(props) {
           src={props.restaurant.image}
           alt="thumb"
           height="100%"
-          width="128"
+          width="100%"
         />
       </div>
       <div className="restaurant-info">
@@ -47,12 +58,12 @@ export default function RestaurantItem(props) {
       <div className="open-container">
         {open ? (
           <div className="open">
-            <FontAwesomeIcon icon={faCheck} />
+            <FontAwesomeIcon icon={faCheck} className="icon" />
             Aberto
           </div>
         ) : (
           <div className="closed">
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTimes} className="icon" />
             Fechado
           </div>
         )}
