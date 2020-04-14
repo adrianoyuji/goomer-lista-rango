@@ -49,7 +49,7 @@ export default function RestaurantItem(props) {
           }
         }
       });
-    }
+    } else setOpen(true);
   }
 
   useEffect(() => {
@@ -57,12 +57,13 @@ export default function RestaurantItem(props) {
   }, []); //runs function to check if restaurant is open
 
   setInverval(() => {
+    //loops function with a set delay value,check utils folder for code
     checkOpen();
-  }, 1000); //loops function with a set delay value,check utils folder for code
+  }, 1000); // 1 second
 
   return (
     <div
-      className="restaurante-item"
+      className="restaurant-item"
       onClick={() => props.setRestaurantId(props.restaurant.id)}
     >
       <div className="image-container">
@@ -74,7 +75,7 @@ export default function RestaurantItem(props) {
         />
       </div>
       <div className="restaurant-info">
-        <div className="restaurante-name">{props.restaurant.name}</div>
+        <div className="restaurant-name">{props.restaurant.name}</div>
         <div className="restaurant-address">{props.restaurant.address}</div>
       </div>
       <div className="open-container">

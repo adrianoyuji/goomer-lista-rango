@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../../SearchBar/SearchBar";
 import axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
+
 import "./Menu.css";
 import Category from "./Category";
 import FoodItem from "./FoodItem";
@@ -15,6 +17,7 @@ export default function Menu(props) {
   const [restaurantInfo, setRestaurantInfo] = useState("");
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
+  const [fakeLoading, setFakeLoading] = useState(false);
 
   //gets restaurant's menu and restaurant's information
   useEffect(() => {
@@ -44,12 +47,6 @@ export default function Menu(props) {
     let categories = _.groupBy(menu, "group");
     categories = Object.entries(categories);
 
-    var filteredList = categories.map((category) =>
-      category[1].filter((item) =>
-        item.name.toLowerCase().includes(searchText.toLowerCase())
-      )
-    );
-
     return (
       <div className="menu">
         <div className="info-container">
@@ -74,20 +71,43 @@ export default function Menu(props) {
         </div>
         <SearchBar title="Buscar no Cardápio" handleChange={handleChange} />
         <div className="categories">
-          {searchText ? (
-            <div className="filtered-list">
-              {filteredList.map((foods) =>
-                foods.map((food, index) => <FoodItem food={food} key={index} />)
-              )}
-            </div>
-          ) : (
-            categories.map((category, index) => (
-              <Category category={category} key={index} />
-            ))
-          )}
+          {searchText
+            ? renderFilteredList(categories)
+            : categories.map((category, index) => (
+                <Category category={category} key={index} />
+              ))}
         </div>
       </div>
     );
+  }
+
+  function renderFilteredList(categories) {
+    var filteredList = categories.map((category) =>
+      category[1].filter((item) =>
+        item.name.toLowerCase().includes(searchText.toLowerCase())
+      )
+    );
+
+    if (fakeLoading) {
+      setTimeout(() => {
+        setFakeLoading(false);
+      }, 500); // 0.5 second
+      return (
+        <div className="spinner">
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
+      );
+    } else {
+      return (
+        <div className="filtered-list">
+          {filteredList.map((foods) =>
+            foods.map((food, index) => <FoodItem food={food} key={index} />)
+          )}
+        </div>
+      );
+    }
   }
 
   //Returns an html tag with the restaurant's schedules
@@ -159,6 +179,7 @@ export default function Menu(props) {
   //handles search bar text changes
   const handleChange = (event) => {
     setSearchText(event.target.value);
+    setFakeLoading(true);
   };
 
   return (
@@ -168,7 +189,11 @@ export default function Menu(props) {
         Voltar
       </div>
       {loading ? (
-        <div className="loading">Carregando, por favor aguarde...</div>
+        <div className="spinner">
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
       ) : (
         renderMenuPage()
       )}

@@ -85,6 +85,10 @@
   display: flex;
 }
 
+.spinner {
+  text-align: center;
+}
+
 /**Mobile or small devices Styling **/
 
 @media only screen and (max-width: 768px) {

@@ -8,23 +8,22 @@
   padding-top: 15px;
 }
 
-.loading {
-  text-align: center;
-  font-size: large;
-}
-
 .restaurant-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-.restaurante-item:hover {
-  transform: scale(1.1);
-}
-.restaurante-item:active {
-  background-color: #c1c1c1;
-}
-
-h1 {
+.welcome {
+  font-weight: bold;
   text-align: center;
+  font-size: xx-large;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For even smaller mobile phones: */
+
+  [class*="welcome"] {
+    font-size: large;
+  }
 }

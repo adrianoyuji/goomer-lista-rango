@@ -15,9 +15,6 @@
   cursor: pointer;
 }
 
-.item-container:hover {
-  transform: scale(1.1);
-}
 .item-container:active {
   background-color: #c1c1c1;
 }
@@ -88,5 +85,11 @@
   [class*="modal-image"] {
     max-height: 256px;
     width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .item-container:hover {
+    transform: scale(1.1);
   }
 }
