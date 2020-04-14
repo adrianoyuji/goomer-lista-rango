@@ -26,10 +26,9 @@ Durante o desenvolvimento do projeto surgiram diversos problemas relacionados ao
 
 # Como rodar minha aplicação
 1. Faça o pull ou Download deste repositório
-2. `cd ./frontend`
-3. `npm install`
-4. `npm start`
-5. abrir navegador em [localhost:3000](http://localhost:3000/)
+2. `npm install`
+3. `npm start`
+4. abrir navegador em [localhost:3000](http://localhost:3000/)
 
 ## Contato
 Email: adrianoyuji@gmail.com
