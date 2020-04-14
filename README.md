@@ -7,22 +7,22 @@ Escolhi este desafio em especifico pois sabendo de meus limites técnicos, este 
 
 # Desafios/Problemas
 Durante o desenvolvimento do projeto surgiram diversos problemas relacionados aos requisitos do desafio. Os principais foram:
-⋅⋅* Filtrar Restaurantes de Itens do Cardápio e tratar a renderização dos itens filtrados;
-⋅⋅* Checar se o restaurante está aberto ou não;
-⋅⋅* Checar se um produto está em promoção ou não;
-⋅⋅* Fazer as checagems dos horários sem que seja necessário a atualização da página;
-⋅⋅* Responsividade do Layout da página web;
-⋅⋅* Tratamento de preços;
-⋅⋅* Exibição do Modal para apresentar os detalhes do produto.
+* Filtrar Restaurantes de Itens do Cardápio e tratar a renderização dos itens filtrados;
+* Checar se o restaurante está aberto ou não;
+* Checar se um produto está em promoção ou não;
+* Fazer as checagems dos horários sem que seja necessário a atualização da página;
+* Responsividade do Layout da página web;
+* Tratamento de preços;
+* Exibição do Modal para apresentar os detalhes do produto.
 
 # Tecnologias Usadas
-⋅⋅*React
-⋅⋅*Axios
-⋅⋅*Bootstrap
-⋅⋅*CSS
-⋅⋅*Goomer API
-⋅⋅*Font Awesome
-⋅⋅*lodash
+* React
+* Axios
+* Bootstrap
+* CSS
+* Goomer API
+* Font Awesome
+* lodash
 
 # Como rodar minha aplicação
 1. Faça o pull ou Download deste repositório
