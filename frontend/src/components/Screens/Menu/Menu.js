@@ -16,6 +16,7 @@ export default function Menu(props) {
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
 
+  //gets restaurant's menu and restaurant's information
   useEffect(() => {
     axios
       .get(
@@ -38,6 +39,58 @@ export default function Menu(props) {
       .catch((error) => alert("Error while getting restaurant list"));
   }, []);
 
+  //renders menu page with categories and menu items, also filters searchbar inputs
+  function renderMenuPage() {
+    let categories = _.groupBy(menu, "group");
+    categories = Object.entries(categories);
+
+    var filteredList = categories.map((category) =>
+      category[1].filter((item) =>
+        item.name.toLowerCase().includes(searchText.toLowerCase())
+      )
+    );
+
+    return (
+      <div className="menu">
+        <div className="info-container">
+          <div className="info-image">
+            <img
+              src={restaurantInfo.image}
+              alt="thumb"
+              height="100%"
+              width="100%"
+            />
+          </div>
+          <div className="infos">
+            <div className="restaurante-name">{restaurantInfo.name}</div>
+            <div className="restaurant-hours">
+              {restaurantInfo.hours
+                ? restaurantInfo.hours.map((hours, index) =>
+                    renderHours(hours, index)
+                  )
+                : null}
+            </div>
+          </div>
+        </div>
+        <SearchBar title="Buscar no Cardápio" handleChange={handleChange} />
+        <div className="categories">
+          {searchText ? (
+            <div className="filtered-list">
+              {filteredList.map((foods) =>
+                foods.map((food, index) => <FoodItem food={food} key={index} />)
+              )}
+            </div>
+          ) : (
+            categories.map((category, index) => (
+              <Category category={category} key={index} />
+            ))
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  //Returns an html tag with the restaurant's schedules
   function renderHours(hours, index) {
     let start, end;
 
@@ -103,59 +156,10 @@ export default function Menu(props) {
     );
   }
 
+  //handles search bar text changes
   const handleChange = (event) => {
     setSearchText(event.target.value);
   };
-
-  function renderMenuPage() {
-    let categories = _.groupBy(menu, "group");
-    categories = Object.entries(categories);
-
-    var filteredList = categories.map((category) =>
-      category[1].filter((item) =>
-        item.name.toLowerCase().includes(searchText.toLowerCase())
-      )
-    );
-
-    return (
-      <div className="menu">
-        <div className="info-container">
-          <div className="info-image">
-            <img
-              src={restaurantInfo.image}
-              alt="thumb"
-              height="100%"
-              width="100%"
-            />
-          </div>
-          <div className="infos">
-            <div className="restaurante-name">{restaurantInfo.name}</div>
-            <div className="restaurant-hours">
-              {restaurantInfo.hours
-                ? restaurantInfo.hours.map((hours, index) =>
-                    renderHours(hours, index)
-                  )
-                : null}
-            </div>
-          </div>
-        </div>
-        <SearchBar title="Buscar no Cardápio" handleChange={handleChange} />
-        <div className="categories">
-          {searchText ? (
-            <div className="filtered-list">
-              {filteredList.map((foods) =>
-                foods.map((food, index) => <FoodItem food={food} key={index} />)
-              )}
-            </div>
-          ) : (
-            categories.map((category, index) => (
-              <Category category={category} key={index} />
-            ))
-          )}
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div>

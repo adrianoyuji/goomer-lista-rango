@@ -1,3 +1,5 @@
+/** FoodItem Styling **/
+
 .item-container {
   background-color: white;
   margin: 20px;
@@ -70,6 +72,8 @@
   text-align: center;
   vertical-align: auto;
 }
+
+/**Mobile or small devices Styling **/
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */

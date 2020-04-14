@@ -1,27 +1,41 @@
 import React, { useState, useEffect } from "react";
-import "./Restaurants.css";
+import "./RestaurantItem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import setInverval from "../../../utils/index";
 
 //code understands that if no object hours does not exist the store is open
+/*
+props.restaurant :{
+id: Float
+name: String
+address: String
+hours: Array
+        hours: Array
+            from: String
+            to: String
+            days: Array
+                 0:Float
+image: String}
+ */
 
 export default function RestaurantItem(props) {
   const [open, setOpen] = useState(true);
   var date, weekDay, now;
+  /*Function checks current time and compares if it is in range of the object 'to' and 'from' to tell if the restaurant is open */
   function checkOpen() {
     date = new Date();
     weekDay = date.getDay() + 1;
     now = date.getHours() * 60 + date.getMinutes();
     if (!!props.restaurant.hours) {
-      var teste = 1;
+      var stopCondition = 1; //this serves as a stopping condition in order to prevent this function from checking uneccessary time schedules
       //verifies if object hours exists and prevent errors
-      props.restaurant.hours.forEach((element) => {
-        if (element.days.find((day) => day === weekDay) && teste) {
-          let [startHour, startMin] = element.from.split(":");
+      props.restaurant.hours.forEach((restaurant) => {
+        if (restaurant.days.find((day) => day === weekDay) && stopCondition) {
+          let [startHour, startMin] = restaurant.from.split(":");
           let start = parseFloat(startHour) * 60 + parseFloat(startMin);
-          let [endHour, endMin] = element.to.split(":");
+          let [endHour, endMin] = restaurant.to.split(":");
           let end = parseFloat(endHour) * 60 + parseFloat(endMin);
           if (end < 360 && now < 1440) {
             //checks if object 'to' is under 6 AM and current time is below 11:59PM adds an extra 24 hours worth of minutes to total
@@ -29,7 +43,7 @@ export default function RestaurantItem(props) {
           }
           if (start <= now && now <= end) {
             setOpen(true);
-            teste = 0;
+            stopCondition = 0;
           } else {
             setOpen(false);
           }

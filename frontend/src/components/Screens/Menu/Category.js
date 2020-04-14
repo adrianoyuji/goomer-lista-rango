@@ -5,9 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
+/*This component renders categories bars inside a menu
+props.category:{
+  0:String //restaurante name
+  1:array with products
+}
+*/
+
 export default function Category(props) {
   const [open, setOpen] = useState(false);
 
+  //renders when category is clicked to be expanded
   function renderOpen() {
     return (
       <>
@@ -28,6 +36,7 @@ export default function Category(props) {
     );
   }
 
+  //renders when category is clicked to be closed
   function renderClosed() {
     return (
       <div className="category-box" onClick={() => setOpen(true)}>

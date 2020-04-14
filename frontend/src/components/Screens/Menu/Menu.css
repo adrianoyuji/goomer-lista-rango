@@ -1,3 +1,5 @@
+/** Menu Styling **/
+
 .menu {
   height: 100%;
   width: auto;
@@ -82,6 +84,8 @@
   flex-wrap: wrap;
   display: flex;
 }
+
+/**Mobile or small devices Styling **/
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */

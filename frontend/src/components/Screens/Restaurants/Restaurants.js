@@ -6,6 +6,8 @@ import RestaurantItem from "./RestaurantItem";
 
 const goomer_restaurant_api = "http://challange.goomer.com.br/restaurants";
 
+/* this component renders all the available restaurants gotten from the api */
+
 export default function Restaurants(props) {
   const [restaurantList, setRestaurantList] = useState("");
   const [loading, setLoading] = useState(true);
@@ -22,10 +24,12 @@ export default function Restaurants(props) {
       .catch((error) => alert("Error while getting restaurant list"));
   }, []);
 
+  //handles search bar text changes
   const handleChange = (event) => {
     setSearchText(event.target.value);
   };
 
+  //renders list of restaurants, also handles search bar filters
   function renderRestaurantList() {
     let filteredList = restaurantList.filter((restaurant) =>
       restaurant.name.toLowerCase().includes(searchText.toLowerCase())

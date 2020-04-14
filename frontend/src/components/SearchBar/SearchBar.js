@@ -3,6 +3,7 @@ import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
+//renders searchbar, receives a title, and handleChange function as props
 export default function SearchBar(props) {
   return (
     <div className="SearchBar">

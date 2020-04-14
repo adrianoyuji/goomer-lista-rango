@@ -1,3 +1,5 @@
+/** FoodDetails Styling **/
+
 .modal-info {
   display: flex;
   flex-direction: row;
@@ -103,6 +105,8 @@ p {
 .confirm-button:active {
   background-color: #006468;
 }
+
+/**Mobile or small devices Styling **/
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */

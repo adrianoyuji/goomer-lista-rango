@@ -3,11 +3,28 @@ import "./FoodItem.css";
 import FoodDetail from "../../Modal/FoodDetail";
 import setInverval from "../../../utils/index";
 
+/* this renders a small component with food information
+  props.food:{
+    restaurantId: Float
+    name: String
+    image: String
+    price: Float
+    group: String
+    sales: Array
+          description: String
+          price: Float
+          hours: Array
+                0:
+                from: String
+                to: String
+                days: Array
+                      0: Float}
+*/
+
 export default function FoodItem(props) {
   const [price, setPrice] = useState("");
   const [onSale, setSale] = useState(false);
   const [modalShow, setModalShow] = useState(false);
-
   var date, weekDay, now;
 
   //checks if food item has a image, if it doesn't gives a 'no image' placeholder
@@ -15,7 +32,7 @@ export default function FoodItem(props) {
     props.food.image =
       "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
   }
-  //special function to detect if product is on sale or not as well if it even has a price
+  //special function that detects if product is on sale or not as well if it even has a price
   function checkPrice() {
     date = new Date();
     weekDay = date.getDay() + 1;
@@ -48,7 +65,7 @@ export default function FoodItem(props) {
 
   useEffect(() => {
     checkPrice();
-  }, []);
+  }, []); //initial loop
 
   setInverval(() => {
     checkPrice();
