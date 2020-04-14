@@ -4,7 +4,7 @@ import "./Restaurants.css";
 import SearchBar from "../../SearchBar/SearchBar";
 import RestaurantItem from "./RestaurantItem";
 
-const goomer_restaurant_api = "http://challange.goomer.com.br/restaurants";
+const goomer_restaurant_api = "https://challange.goomer.com.br/restaurants";
 
 /* this component renders all the available restaurants gotten from the api */
 

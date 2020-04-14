@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import _ from "lodash";
 
-const goomer_restaurant_api = "http://challange.goomer.com.br/restaurants";
+const goomer_restaurant_api = "https://challange.goomer.com.br/restaurants";
 
 export default function Menu(props) {
   const [menu, setMenu] = useState([]);
